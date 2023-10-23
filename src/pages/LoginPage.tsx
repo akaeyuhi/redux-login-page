@@ -11,7 +11,7 @@ export default function LoginPage() {
 
   const dispatch = useAppDispatch();
 
-  const { error, loading} = useAppSelector(state => state.account);
+  const { error, loading, token} = useAppSelector(state => state.account);
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -42,7 +42,7 @@ export default function LoginPage() {
   };
 
   useEffect(() => {
-    if (!error) return navigate('/table');
+    if (!error && token) return navigate('/');
   }, [error]);
 
   if (loading) return <Loader />;
