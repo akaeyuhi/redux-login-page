@@ -18,7 +18,6 @@ export default class ValidationError {
   }
   static defaultPasswordLength = 8;
   static validate(data: { username: string; password: string; }) {
-    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
     const validationErrors = [];
     if (!data.username || !data.username.length) validationErrors.push(new ValidationError(
       ValidationErrors.Username, ValidationDescriptions.Username,
