@@ -1,6 +1,5 @@
 import { Action, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { loginUser } from './actions/loginUser';
-import { registerUser } from './actions/registerUser';
 import { AuthState } from './types/AuthState';
 import { AuthFulfilled } from './types/AuthFulfilled';
 
@@ -37,9 +36,6 @@ const accountSlice = createSlice({
   },
   extraReducers: builder => {
     builder.addCase(loginUser.fulfilled, (state, action) => {
-      saveUser(state, action);
-    });
-    builder.addCase(registerUser.fulfilled, (state: AuthState, action) => {
       saveUser(state, action);
     });
     builder.addMatcher(isRejectedAction, (state, action) => {
